@@ -17,3 +17,9 @@ Included in the source code are samples on how to:
 * Create a toast notification which displays text only
 * Create a toast notification which uses a local image
 * How to use the XML templates and modify them for your own use
+
+Further samples
+--------
+
+To get the XML required for other templates, download the official SDK sample, run the application, click the type of notification you would like, and take note of the outputted XML on the screen
+[http://code.msdn.microsoft.com/windowsapps/Toast-notifications-sample-52eeba29](http://code.msdn.microsoft.com/windowsapps/Toast-notifications-sample-52eeba29)

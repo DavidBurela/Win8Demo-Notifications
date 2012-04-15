@@ -10,6 +10,7 @@
     <Grid Background="{StaticResource ApplicationPageBackgroundBrush}">
         <StackPanel>
             <Button Content="Raise notification - Text" Click="NotificationTextButton_Click" />
+            <Button Content="Raise notification - Local image" Click="NotificationImageButton_Click" />
         </StackPanel>
     </Grid>
 </Page>

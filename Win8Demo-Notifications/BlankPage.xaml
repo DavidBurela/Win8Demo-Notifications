@@ -8,6 +8,8 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundBrush}">
-
+        <StackPanel>
+            <Button Content="Raise notification - Text" Click="NotificationTextButton_Click" />
+        </StackPanel>
     </Grid>
 </Page>

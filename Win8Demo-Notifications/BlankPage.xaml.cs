@@ -1,24 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.Data.Xml.Dom;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Win8Demo_Notifications
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class BlankPage : Page
     {
         public BlankPage()
@@ -27,12 +15,23 @@ namespace Win8Demo_Notifications
         }
 
         /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
+        /// Raises a text notification toast locally.
+        /// IMPORTANT: if copying this into your own application, ensure that "Toast capable" is enabled in the application manifest
         /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.  The Parameter
-        /// property is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void NotificationTextButton_Click(object sender, RoutedEventArgs e)
         {
+            // Toasts use a predefined set of standard templates to display their content.
+            // The updates happen by sending a XML fragment to the Toast Notification Manager.
+            // To make things easier, we will get the template for a toast iwth text as a base, and modify it from there
+            var toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
+
+            // Find the 'text' element in the template's XML, and insert the text "A sample toast" into it.
+            var elements = toastXml.GetElementsByTagName("text");
+            elements[0].AppendChild(toastXml.CreateTextNode("A sample toast"));
+
+            // Create a ToastNotification from our XML, and send it to the Toast Notification Manager
+            var toast = new ToastNotification(toastXml);
+            ToastNotificationManager.CreateToastNotifier().Show(toast);
         }
     }
 }

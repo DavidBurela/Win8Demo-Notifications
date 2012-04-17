@@ -52,12 +52,12 @@ namespace Win8Demo_Notifications
             var binding = toastXml.CreateElement("binding");
             binding.SetAttribute("template", "ToastImageAndText01");
 
-            // An image element is then created under the TileSquareImage XML node. The path to the image is specified
+            // An image element is then created under the ToastImageAndText01 XML node. The path to the image is specified
             var image = toastXml.CreateElement("image");
             image.SetAttribute("id", "1");
             image.SetAttribute("src", @"Assets/DemoImage.png");
 
-            // A text element is created under the TileSquareImage XML node.
+            // A text element is created under the ToastImageAndText01 XML node.
             var text = toastXml.CreateElement("text");
             text.SetAttribute("id", "1");
             text.InnerText = "Another sample toast. This time with an image";
